@@ -8,6 +8,7 @@ class App(QMainWindow):
 
     def __init__(self):
         super().__init__()
+        self.setWindowIcon(QIcon('icon.jfif'))
         self.title = 'Download Youtube Video'
         self.left = 10
         self.top = 10
@@ -36,7 +37,7 @@ class App(QMainWindow):
     def on_click(self):
         textboxValue = self.textbox.text()
         otp = "./video"
-        YouTube(textboxValue).streams.first().download(otp)
+        YouTube(textboxValue).streams.get_highest_resolution().download(otp)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
